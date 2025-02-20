@@ -24,7 +24,7 @@
       margin: 0;
       line-height: 80px;
       font-weight: 600;
-      font-size: 24px;
+      font-size: 12px; /* Reduced by 50% */
     }
     
     /* Logo styling */
@@ -34,11 +34,12 @@
       top: 50%;
       transform: translateY(-50%);
       color: gold;
+      font-size: 10px; /* Reduced by 50% */
     }
     .overlay-container {
       display: inline-block;
-      width: 40px;
-      height: 40px;
+      width: 20px; /* Reduced by 50% */
+      height: 20px; /* Reduced by 50% */
     }
     .overlay-container .letter {
       position: absolute;
@@ -46,11 +47,11 @@
       top: 50%;
       transform: translate(-50%, -50%);
       font-weight: 300;
-      font-size: 40px;
+      font-size: 20px; /* Reduced by 50% */
       color: gold;
     }
-    .tagline-primary { font-size: 20px; font-weight: 600; margin-top: -10px; color: gold; }
-    .tagline-secondary { font-size: 8px; font-weight: 400; margin-top: -5px; color: gold; }
+    .tagline-primary { font-size: 10px; font-weight: 600; margin-top: -5px; color: gold; }
+    .tagline-secondary { font-size: 4px; font-weight: 400; margin-top: -2px; color: gold; }
     
     /* 360 Viewer Container */
     #panorama {
@@ -60,32 +61,32 @@
     }
     
     /* Responsive Design for iPhone */
-@media (max-width: 768px) {
-  #header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
-  #header-container h2 {
-    text-align: left;
-    font-size: 18px;
-    margin: 0;
-  }
-  #logo {
-    position: relative;
-    left: auto;
-    right: 0;
-    transform: none;
-    text-align: right;
-  }
-}
+    @media (max-width: 768px) {
+      #header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+      #header-container h2 {
+        text-align: left;
+        font-size: 9px; /* Reduced by 50% */
+        margin: 0;
+      }
+      #logo {
+        position: relative;
+        left: auto;
+        right: 0;
+        transform: none;
+        text-align: right;
+      }
+    }
     
     /* Navigation buttons */
     .nav-btn {
       margin-top: 10px;
-      padding: 10px 15px;
-      font-size: 16px;
+      padding: 5px 10px; /* Reduced by 50% */
+      font-size: 8px; /* Reduced by 50% */
       background-color: #007bff;
       color: white;
       border: none;
@@ -125,12 +126,12 @@
         firstScene: 'hall',
         autoLoad: true,
         showZoomCtrl: true,
-        minPitch: -90,
-        maxPitch: 90,
+        minPitch: -180,
+        maxPitch: 180,
         minYaw: -180,
         maxYaw: 180,
-        minHfov: 30,
-        maxHfov: 60
+        minHfov: 70,
+        maxHfov: 100
       },
       scenes: {
         hall: {
@@ -139,7 +140,7 @@
           hotSpots: [
             {
               pitch: 0,
-              yaw: 120,
+              yaw: 200,
               type: 'scene',
               text: 'Go to Kitchen',
               sceneId: 'kitchen'
@@ -152,7 +153,7 @@
           hotSpots: [
             {
               pitch: 0,
-              yaw: -85,
+              yaw: -45,
               type: 'scene',
               text: 'Go to Hall',
               sceneId: 'hall'
