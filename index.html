@@ -33,6 +33,7 @@
       right: 20px;
       top: 50%;
       transform: translateY(-50%);
+      color: gold;
     }
     .overlay-container {
       display: inline-block;
@@ -46,16 +47,32 @@
       transform: translate(-50%, -50%);
       font-weight: 300;
       font-size: 40px;
-      color: #000;
+      color: gold;
     }
-    .tagline-primary { font-size: 20px; font-weight: 600; margin-top: -10px; }
-    .tagline-secondary { font-size: 8px; font-weight: 400; margin-top: -5px; }
+    .tagline-primary { font-size: 20px; font-weight: 600; margin-top: -10px; color: gold; }
+    .tagline-secondary { font-size: 8px; font-weight: 400; margin-top: -5px; color: gold; }
     
     /* 360 Viewer Container */
     #panorama {
       width: 100vw;
-      height: 100vh;
+      height: 80vh;
       margin-top: 10px;
+    }
+    
+    /* Responsive Design for iPhone */
+    @media (max-width: 768px) {
+      body { font-size: 14px; }
+      #header-container h2 { font-size: 18px; }
+      .tagline-primary { font-size: 16px; }
+      .tagline-secondary { font-size: 6px; }
+      
+      #content-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      #panorama { width: 60vw; height: 80vh; }
+      #logo { width: 40vw; text-align: center; right: auto; left: auto; position: relative; transform: none; }
     }
     
     /* Navigation buttons */
@@ -87,8 +104,10 @@
     </div>
   </div>
   
-  <!-- 360 Viewer -->
-  <div id="panorama"></div>
+  <div id="content-wrapper">
+    <!-- 360 Viewer -->
+    <div id="panorama"></div>
+  </div>
   
   <!-- Navigation Buttons -->
   <button class="nav-btn" onclick="loadScene('hall')">Go to Hall</button>
@@ -98,7 +117,14 @@
     let viewer = pannellum.viewer('panorama', {
       default: {
         firstScene: 'hall',
-        autoLoad: true
+        autoLoad: true,
+        showZoomCtrl: true,
+        minPitch: -30,
+        maxPitch: 30,
+        minYaw: -180,
+        maxYaw: 180,
+        minHfov: 70,
+        maxHfov: 100
       },
       scenes: {
         hall: {
@@ -107,7 +133,7 @@
           hotSpots: [
             {
               pitch: 0,
-              yaw: 80,
+              yaw: 45,
               type: 'scene',
               text: 'Go to Kitchen',
               sceneId: 'kitchen'
@@ -120,7 +146,7 @@
           hotSpots: [
             {
               pitch: 0,
-              yaw: 50,
+              yaw: -45,
               type: 'scene',
               text: 'Go to Hall',
               sceneId: 'hall'
