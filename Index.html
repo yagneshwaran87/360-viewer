@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>360° Walkthrough - Hall & Kitchen</title>
+
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Pannellum 360° Viewer (CDN) -->
+  <script src="https://cdn.pannellum.org/2.5/pannellum.js"></script>
+  <link rel="stylesheet" href="https://cdn.pannellum.org/2.5/pannellum.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+    }
+
+    /* 360 Viewer */
+    #panorama {
+      width: 100%;
+      height: 500px;
+    }
+
+    /* Fullscreen Button */
+    #fullscreenBtn {
+      margin-top: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #fullscreenBtn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>360° Walkthrough - Hall & Kitchen</h2>
+  <div id="panorama"></div>
+
+  <button id="fullscreenBtn">Go Fullscreen</button>
+
+  <script>
+    const viewer = pannellum.viewer('panorama', {
+      type: 'equirectangular',
+      panorama: 'hall.jpg',  // Change this to your Hall image
+      autoLoad: true,
+      hotSpots: [
+        {
+          pitch: 0,  // Adjust for arrow placement
+          yaw: 90,   // Adjust for direction
+          type: 'scene',
+          text: 'Go to Kitchen',
+          sceneId: 'kitchen'
+        }
+      ],
+      scenes: {
+        kitchen: {
+          type: 'equirectangular',
+          panorama: 'kitchen.jpg',  // Change this to your Kitchen image
+          autoLoad: true
+        }
+      }
+    });
+
+    // Fullscreen button
+    document.getElementById('fullscreenBtn').addEventListener('click', function () {
+      document.getElementById('panorama').requestFullscreen();
+    });
+  </script>
+
+</body>
+</html>
