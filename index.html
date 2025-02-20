@@ -56,24 +56,30 @@
     #panorama {
       width: 100vw;
       height: 80vh;
-      margin-top: 10px;
+      margin-top: 5px;
     }
     
     /* Responsive Design for iPhone */
-    @media (max-width: 768px) {
-      body { font-size: 14px; }
-      #header-container h2 { font-size: 18px; }
-      .tagline-primary { font-size: 16px; }
-      .tagline-secondary { font-size: 6px; }
-      
-      #content-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
-      #panorama { width: 100vw; height: 75vh; }
-      #logo { width: 40vw; text-align: center; right: auto; left: auto; position: relative; transform: none; }
-    }
+@media (max-width: 768px) {
+  #header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  #header-container h2 {
+    text-align: left;
+    font-size: 18px;
+    margin: 0;
+  }
+  #logo {
+    position: relative;
+    left: auto;
+    right: 0;
+    transform: none;
+    text-align: right;
+  }
+}
     
     /* Navigation buttons */
     .nav-btn {
