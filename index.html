@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>360° Walkthrough - Hall & Kitchen</title>
-
-  <!-- Poppins Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Pannellum 360° Viewer (CDN) -->
-  <script src="https://cdn.pannellum.org/2.5/pannellum.js"></script>
-  <link rel="stylesheet" href="https://cdn.pannellum.org/2.5/pannellum.css">
-
+  <meta charset="UTF-8" />
+  <title>360° Walkthrough | Yagneshwaran Design Group</title>
+  
+  <!-- Import Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Pannellum for 360° viewer -->
+  <script src="pannellum.js"></script>
+  <link rel="stylesheet" href="pannellum.css" />
+  
   <style>
-    body {
+    body { font-family: "Poppins", sans-serif; margin: 0; text-align: center; }
+    
+    #header-container {
+      position: relative;
+      height: 80px;
+      border-bottom: 1px solid #ddd;
+    }
+    #header-container h2 {
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      text-align: center;
+      line-height: 80px;
+      font-weight: 600;
+      font-size: 24px;
     }
-
-    /* 360 Viewer */
-    #panorama {
-      width: 100%;
-      height: 500px;
+    
+    /* Logo styling */
+    #logo {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
     }
-
-    /* Fullscreen Button */
-    #fullscreenBtn {
+    .overlay-container {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+    }
+    .overlay-container .letter {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 300;
+      font-size: 40px;
+      color: #000;
+    }
+    .tagline-primary { font-size: 20px; font-weight: 600; margin-top: -10px; }
+    .tagline-secondary { font-size: 8px; font-weight: 400; margin-top: -5px; }
+    
+    /* 360 Viewer Container */
+    #panorama { width: 100%; height: 500px; margin-top: 10px; }
+    
+    /* Navigation buttons */
+    .nav-btn {
       margin-top: 10px;
       padding: 10px 15px;
       font-size: 16px;
@@ -36,46 +64,70 @@
       cursor: pointer;
       border-radius: 5px;
     }
-    #fullscreenBtn:hover {
-      background-color: #0056b3;
-    }
+    .nav-btn:hover { background-color: #0056b3; }
   </style>
 </head>
 <body>
 
-  <h2>360° Walkthrough - Hall & Kitchen</h2>
+  <!-- Header with title and logo -->
+  <div id="header-container">
+    <h2>360° Virtual Walkthrough</h2>
+    <div id="logo">
+      <div class="overlay-container">
+        <span class="letter y">Y</span>
+        <span class="letter w">W</span>
+      </div>
+      <div class="tagline-primary">YAGNESHWARAN</div>
+      <div class="tagline-secondary">DESIGN GROUP</div>
+    </div>
+  </div>
+  
+  <!-- 360 Viewer -->
   <div id="panorama"></div>
-
-  <button id="fullscreenBtn">Go Fullscreen</button>
-
+  
+  <!-- Navigation Buttons -->
+  <button class="nav-btn" onclick="loadScene('hall')">Go to Hall</button>
+  <button class="nav-btn" onclick="loadScene('kitchen')">Go to Kitchen</button>
+  
   <script>
-    const viewer = pannellum.viewer('panorama', {
-      type: 'equirectangular',
-      panorama: 'hall.jpg',  // Change this to your Hall image
-      autoLoad: true,
-      hotSpots: [
-        {
-          pitch: 0,  // Adjust for arrow placement
-          yaw: 90,   // Adjust for direction
-          type: 'scene',
-          text: 'Go to Kitchen',
-          sceneId: 'kitchen'
-        }
-      ],
+    let viewer = pannellum.viewer('panorama', {
+      default: {
+        firstScene: 'hall',
+        autoLoad: true
+      },
       scenes: {
+        hall: {
+          type: 'equirectangular',
+          panorama: 'hall.png',
+          hotSpots: [
+            {
+              pitch: 0,
+              yaw: 50,
+              type: 'scene',
+              text: 'Go to Kitchen',
+              sceneId: 'kitchen'
+            }
+          ]
+        },
         kitchen: {
           type: 'equirectangular',
-          panorama: 'kitchen.jpg',  // Change this to your Kitchen image
-          autoLoad: true
+          panorama: 'kitchen.png',
+          hotSpots: [
+            {
+              pitch: 0,
+              yaw: -50,
+              type: 'scene',
+              text: 'Go to Hall',
+              sceneId: 'hall'
+            }
+          ]
         }
       }
     });
-
-    // Fullscreen button
-    document.getElementById('fullscreenBtn').addEventListener('click', function () {
-      document.getElementById('panorama').requestFullscreen();
-    });
+    
+    function loadScene(scene) {
+      viewer.loadScene(scene);
+    }
   </script>
-
 </body>
 </html>
