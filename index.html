@@ -61,28 +61,39 @@
     
     /* Responsive Design for iPhone */
     @media (max-width: 768px) {
-      #header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        height: 40px; /* Reduced height by half */
-      }
-      #header-container h2 {
-        text-align: left;
-        font-size: 9px; /* Reduced by 50% */
-        margin: 0;
-        line-height: 40px; /* Adjusted for new height */
-      }
-      #logo {
-        position: relative;
-        left: auto;
-        right: 0;
-        transform: none;
-        text-align: right;
-        line-height: 40px; /* Align with title */
-      }
-    }
+  #header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 40px; /* Reduced height by half */
+  }
+  #header-container h2 {
+    text-align: left;
+    font-size: 9px; /* Reduced by 50% */
+    margin: 0;
+    line-height: 40px; /* Adjusted for new height */
+  }
+  #logo {
+    position: relative;
+    left: auto;
+    right: 0;
+    transform: none;
+    text-align: right;
+    line-height: 40px; /* Align with title */
+    font-size: 6px; /* Adjust logo size */
+  }
+  .overlay-container .letter {
+    font-size: 10px; /* Adjust as needed */
+  }
+  .tagline-primary {
+    font-size: 5px;
+  }
+  .tagline-secondary {
+    font-size: 2px;
+  }
+}
+
     
     /* Navigation buttons */
     .nav-btn {
