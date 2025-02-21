@@ -63,34 +63,44 @@
     @media (max-width: 768px) {
   #header-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    height: 20px; /* Reduced height by half */
+    justify-content: space-between; /* Space elements evenly */
+    align-items: center; /* Ensure vertical alignment */
+    padding: 0 15px; /* Reduce padding for better fit */
+    height: 30px; /* Adjusted to avoid text overlap */
   }
+
   #header-container h2 {
-    text-align: left;
-    font-size: 9px; /* Reduced by 50% */
+    font-size: 10px; /* Small but readable */
     margin: 0;
-    line-height: 1px; /* Adjusted for new height */
+    line-height: 30px; /* Matches header height for proper centering */
+    flex: 1; /* Ensures title takes the available space */
+    text-align: left; /* Keep title aligned to the left */
   }
+
   #logo {
-    position: relative;
-    left: auto;
-    right: 0;
-    transform: none;
-    text-align: right;
-    line-height: 10px; /* Align with title */
-    font-size: 60px; /* Adjust logo size */
+    font-size: 16px; /* Adjusted for balance */
+    text-align: right; /* Ensures proper alignment */
+    line-height: 30px; /* Matches header height for vertical centering */
   }
+
+  .overlay-container {
+    display: inline-block;
+    width: 20px; /* Proportional sizing */
+    height: 20px;
+  }
+
   .overlay-container .letter {
-    font-size: 16px; /* Y W logo Adjust as needed */
+    font-size: 12px; /* Adjusted for readability */
   }
+
   .tagline-primary {
     font-size: 10px;
+    margin-top: -2px;
   }
+
   .tagline-secondary {
     font-size: 8px;
+    margin-top: -2px;
   }
 }
 
